@@ -1,0 +1,5 @@
+numpy>=1.19
+
+# Optional, used only by scripts/plot_results.py
+# matplotlib>=3.3
+

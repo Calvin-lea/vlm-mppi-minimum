@@ -1,0 +1,8 @@
+{
+  "straight_free": {"target_speed": 8.0, "goal_x": 40.0},
+  "front_static_obstacle": {"target_speed": 7.0, "goal_x": 38.0},
+  "pedestrian_crossing": {"target_speed": 7.0, "goal_x": 36.0},
+  "vehicle_cutin": {"target_speed": 8.0, "goal_x": 42.0},
+  "blocked_lane": {"target_speed": 7.0, "goal_x": 40.0}
+}
+

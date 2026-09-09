@@ -1,0 +1,7 @@
+{
+  "acceleration_bias": 2.0,
+  "steering_bias": 0.22,
+  "accel_sigma": 1.4,
+  "steer_sigma": 0.16
+}
+
