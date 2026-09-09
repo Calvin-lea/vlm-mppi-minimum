@@ -1,0 +1,4 @@
+scenario_id,seed,method,prior_type,total_rollouts,nominal_rollouts,semantic_rollouts,success,collision,route_completion,progress,min_ttc,min_clearance,mean_speed,mean_acceleration,mean_jerk,steering_smoothness,planning_latency,best_cost,selected_hypothesis,steps
+pedestrian_crossing,0,robust_multi_hypothesis,correct,128,38,90,True,False,1.0,40.0,0.0,0.6873961448669432,6.065505946783916,1.642230749130249,12.48026180267334,0.1450955867767334,0.0024062190588317795,-33.704263378592096,nominal,68
+vehicle_cutin,0,robust_multi_hypothesis,correct,128,38,90,True,False,1.0,40.0,2.5914615947073067,6.607612991333008,4.889561688172675,1.5004684925079346,10.515042304992676,0.16460305452346802,0.0023700354216867185,-39.17569332812206,nominal,83
+blocked_lane,0,robust_multi_hypothesis,correct,128,38,90,True,False,1.0,40.0,0.0,1.1631795406341552,6.098427542093871,1.4976965188980103,10.322867393493652,0.12443573772907257,0.002460590838248155,-35.60354695600622,nominal,68

@@ -1,0 +1,2 @@
+scenario_id,seed,method,prior_type,total_rollouts,nominal_rollouts,semantic_rollouts,success,collision,route_completion,progress,min_ttc,min_clearance,mean_speed,mean_acceleration,mean_jerk,steering_smoothness,planning_latency,best_cost,selected_hypothesis,steps
+pedestrian_crossing,0,robust_multi_hypothesis,correct,128,38,90,True,False,1.0,40.0,0.34156975446639726,0.6873961448669432,6.065505946783916,1.642230749130249,12.48026180267334,0.1450955867767334,0.0025181973381971628,-33.704263378592096,nominal,68

@@ -1,0 +1,2 @@
+scenario_id,seed,method,prior_type,total_rollouts,nominal_rollouts,semantic_rollouts,success,collision,route_completion,progress,min_ttc,min_clearance,mean_speed,mean_acceleration,mean_jerk,steering_smoothness,planning_latency,best_cost,selected_hypothesis,steps
+straight_free,0,robust_multi_hypothesis,correct,128,38,90,True,False,1.0,40.0,,,8.187178228853965,1.827426791191101,8.093993186950684,0.07698992639780045,0.0023002754399385596,-71.68546146392822,keep_accelerate,50

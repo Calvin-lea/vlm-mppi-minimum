@@ -1,0 +1,3 @@
+scenario_id,seed,method,prior_type,total_rollouts,nominal_rollouts,semantic_rollouts,success,collision,route_completion,progress,min_ttc,min_clearance,mean_speed,mean_acceleration,mean_jerk,steering_smoothness,planning_latency,best_cost,selected_hypothesis,steps
+front_static_obstacle,0,vanilla,correct,128,128,0,False,False,0.275,11.0,2.772880697063264,4.5497030258178714,0.4129374757926978,0.541739284992218,5.350557804107666,0.08236894756555557,0.0023079585299910833,37.46257754643758,nominal,300
+front_static_obstacle,0,robust_multi_hypothesis,correct,128,38,90,True,False,1.0,40.0,0.0,1.937886619567871,7.380374804400561,1.7383393049240112,11.072604179382324,0.13768182694911957,0.0030040792856717807,-44.99928828648159,nominal,56
