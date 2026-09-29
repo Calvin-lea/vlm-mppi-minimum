@@ -10,6 +10,8 @@ class DynamicsConfig:
     accel_limit: float = 4.0
     steer_limit: float = 0.55
     max_speed: float = 18.0
+    accel_rate_limit: float = float("inf")
+    steer_rate_limit: float = float("inf")
 
 
 class KinematicBicycleModel:
@@ -26,6 +28,25 @@ class KinematicBicycleModel:
         result[..., 1] = np.clip(
             result[..., 1], -self.config.steer_limit, self.config.steer_limit
         )
+        return result
+
+    def limit_control_rates(self, controls, previous_control):
+        """Apply causal actuator-rate limits to sampled control sequences."""
+        result = self.clip_controls(controls)
+        previous = np.asarray(previous_control, dtype=np.float32)
+        previous = np.broadcast_to(
+            previous, result.shape[:-2] + (2,)
+        ).copy()
+        limits = np.asarray(
+            [self.config.accel_rate_limit, self.config.steer_rate_limit],
+            dtype=np.float32,
+        ) * self.config.dt
+        if np.all(np.isinf(limits)):
+            return result
+        for index in range(result.shape[-2]):
+            delta = np.clip(result[..., index, :] - previous, -limits, limits)
+            result[..., index, :] = previous + delta
+            previous = result[..., index, :]
         return result
 
     def step(self, states, controls):
@@ -59,4 +80,3 @@ class KinematicBicycleModel:
             state = self.step(state, controls[:, index])
             trajectory[:, index + 1] = state
         return trajectory
-

@@ -11,16 +11,19 @@ class ProposalConfig:
     steering_bias: float = 0.22
     accel_sigma: float = 1.4
     steer_sigma: float = 0.16
+    steering_initial_fraction: float = 0.35
 
 
-def _steering_template(horizon, bias):
+def _steering_template(horizon, bias, initial_fraction=0.35):
     """Build a smooth establish/hold/recenter lateral template."""
     if horizon < 3:
         return np.full(horizon, bias, dtype=np.float32)
     first_end = max(1, horizon // 3)
     second_end = max(first_end + 1, 2 * horizon // 3)
     result = np.zeros(horizon, dtype=np.float32)
-    result[:first_end] = np.linspace(0.35 * bias, bias, first_end)
+    result[:first_end] = np.linspace(
+        float(initial_fraction) * bias, bias, first_end
+    )
     result[first_end:second_end] = bias
     result[second_end:] = np.linspace(bias, 0.0, horizon - second_end)
     return result
@@ -44,11 +47,12 @@ def build_proposal(hypothesis, horizon, action_dim=2, config=None):
     steer_bias = lateral_sign[hypothesis.action.lateral] * cfg.steering_bias
     accel_bias = longitudinal_sign[hypothesis.action.longitudinal] * cfg.acceleration_bias
     mean[:, 0] = accel_bias
-    mean[:, 1] = _steering_template(horizon, steer_bias)
+    mean[:, 1] = _steering_template(
+        horizon, steer_bias, cfg.steering_initial_fraction
+    )
 
     covariance = np.tile(
         np.asarray([cfg.accel_sigma ** 2, cfg.steer_sigma ** 2], dtype=np.float32),
         (horizon, 1),
     )
     return mean, covariance
-
