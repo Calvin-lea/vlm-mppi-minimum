@@ -1,0 +1,51 @@
+{
+  "profile": "semantic_robustness_v2",
+  "status": "development_smoke_only",
+  "shared_base": {
+    "config": "configs/safety_control_v2_frozen.json",
+    "candidate": "frozen_shared_v2",
+    "sha256": "aebac39b43a49c9fc62a3c63fba36d3e9c8ce9f9ccbfb12be0f5d83cc55188d5"
+  },
+  "scenarios": [
+    "front_static_obstacle",
+    "blocked_lane"
+  ],
+  "methods": [
+    "semantic_top3_controlled",
+    "semantic_top3_controlled_nominal"
+  ],
+  "prior_types": [
+    "correct",
+    "partially_wrong",
+    "fully_wrong"
+  ],
+  "proposal_selection": "episode_fixed",
+  "top3_probability": 0.3333333333333333,
+  "nominal_fallback_ratio": 0.3,
+  "nominal_fallback_temporal_correlation": 0.9,
+  "dynamic_semantic_update": false,
+  "confidence_weighting": false,
+  "candidate_sets": {
+    "correct": [
+      "pass_accelerate",
+      "pass_maintain",
+      "keep_accelerate"
+    ],
+    "partially_wrong": [
+      "pass_maintain",
+      "keep_accelerate",
+      "opposite_maintain"
+    ],
+    "fully_wrong": [
+      "keep_accelerate",
+      "opposite_accelerate",
+      "opposite_maintain"
+    ]
+  },
+  "notes": [
+    "pass and opposite are resolved from CARLA lane availability at episode reset",
+    "only the nominal-fallback method reserves 30 percent of the same total rollout budget",
+    "nominal fallback uses correlated noise so a sample can express a coherent maneuver",
+    "the first run must use development seeds and cannot reuse held-out seeds 0-4 for tuning"
+  ]
+}

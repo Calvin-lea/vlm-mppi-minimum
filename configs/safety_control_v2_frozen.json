@@ -1,0 +1,47 @@
+{
+  "status": "frozen_for_semantic_selection_validation",
+  "frozen_on": "2026-09-13",
+  "note": "Frozen after calibration on seeds 10-14. Do not tune from held-out seeds 0-4.",
+  "active_candidate": "frozen_shared_v2",
+  "candidates": {
+    "frozen_shared_v2": {
+      "collision": 30000.0,
+      "clearance": 600.0,
+      "corridor": 1200.0,
+      "route": 3.0,
+      "speed": 1.0,
+      "near_obstacle_speed": 1.5,
+      "smooth": 6.0,
+      "control_effort": 0.12,
+      "progress": 8.0,
+      "clearance_buffer": 1.0,
+      "corridor_buffer": 0.2,
+      "speed_clearance_distance": 3.5,
+      "minimum_near_speed_ratio": 0.3,
+      "future_discount_seconds": 3.0,
+      "hard_collision_horizon_seconds": 2.0,
+      "accel_rate_limit": 3.0,
+      "steer_rate_limit": 0.3,
+      "throttle_accel_scale": 6.0,
+      "brake_accel_scale": 6.0,
+      "spawn_settle_seconds": 1.5,
+      "preselect_forward_gear": true,
+      "force_forward_gear": false,
+      "comfort_filter_window_seconds": 0.3,
+      "horizon": 40,
+      "proposal_acceleration_bias": 1.6,
+      "proposal_steering_bias": 0.28,
+      "proposal_steering_initial_fraction": 1.0,
+      "lateral_position_gain": 0.09,
+      "lateral_yaw_gain": 1.4
+    }
+  },
+  "metric_candidates": {
+    "minimum_obb_clearance_m": 0.25,
+    "minimum_corridor_margin_m": 0.0,
+    "minimum_swept_obb_ttc_s": 1.0,
+    "comfort_filter_window_seconds": 0.3,
+    "maximum_p95_abs_longitudinal_jerk_mps3": 12.0,
+    "maximum_p95_abs_lateral_jerk_mps3": 12.0
+  }
+}
